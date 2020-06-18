@@ -1,6 +1,6 @@
 .DS_Store
 node_modules/
-src/
+# src/
 webpack.config.js
 package-lock.json
 .editorconfig
