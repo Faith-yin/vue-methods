@@ -27,6 +27,5 @@ function _formRequired(source) {
 }
 
 
-module.exports = {
-  _formRequired
-}
+module.exports = _formRequired
+

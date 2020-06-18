@@ -1,7 +1,7 @@
 {
   "name": "ypf-methods",
   "description": "全局混入 vue 的 js 方法包",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "author": "yinpengfei",
   "main": "dist/build.js",
   "license": "MIT",

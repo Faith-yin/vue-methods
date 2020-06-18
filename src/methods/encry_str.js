@@ -29,6 +29,5 @@ function _encryStr(str, m, n) {
 }
 
 
-module.exports = {
-  _encryStr
-}
+module.exports =  _encryStr
+

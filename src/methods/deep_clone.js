@@ -23,6 +23,4 @@ function _deepClone(obj) {
 }
 
 
-module.exports = {
-  _deepClone
-}
+module.exports = _deepClone
