@@ -1,10 +1,10 @@
 .DS_Store
 node_modules/
-# src/
-# webpack.config.js
-# package-lock.json
-# .editorconfig
-# .babelrc
+src/
+webpack.config.js
+package-lock.json
+.editorconfig
+.babelrc
 npm-debug.log
 yarn-error.log
 
