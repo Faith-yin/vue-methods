@@ -1,14 +1,31 @@
 /*
- * @Date: 2020-06-18 09:43:11
+ * @Date: 2020-11-26 10:14:04
  * @information: 导出
  */
-const _deepClone = require('./deep_clone')
-const _encryStr = require('./encry_str')
-const _formRequired = require('./form_required')
+import _deepClone from './deepClone'
+import _encryStr from './encryStr'
+import _getUrlQuery from './getUrlQuery'
+import _moneyBigFormat from './moneyBigFormat'
+import _moneyReplace from './moneyReplace'
+import _moneyThousandFormat from './moneyThousandFormat'
 
 
-module.exports = {
+export {
   _deepClone,
   _encryStr,
-  _formRequired,
+  _getUrlQuery,
+  _moneyBigFormat,
+  _moneyReplace,
+  _moneyThousandFormat,
 }
+
+
+export default {
+  _deepClone,
+  _encryStr,
+  _getUrlQuery,
+  _moneyBigFormat,
+  _moneyReplace,
+  _moneyThousandFormat,
+}
+

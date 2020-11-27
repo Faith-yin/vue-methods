@@ -1,0 +1,5 @@
+node_modules/
+.babelrc
+/src/
+webpack.config.js
+package-lock.json (use shrinkwrap instead)

@@ -6,8 +6,6 @@
 
 # ypf-methods
 
-> 全局混入 vue 的 js 常用方法包
-
 ## 使用方式
 
 ```00
@@ -19,71 +17,94 @@
 
     import ypfMethods form 'ypf-methods'
 
-  03. 在 main.js 中 初始化方法包
+  03. 可绑定至原型链
 
-    Vue.use(ypfMethods)
+    Vue.prototype.$ypfMethods = ypfMethods
 ```
 
 > 方法说明：
 
-### _deepClone  // 深拷贝
+### 1. _deepClone  // 深拷贝
+
+参数：字符串或引用类型
 
 ```01
-  深拷贝：改变对象或数组或字符串的地址（若值是undefined的话，该字段消失）
+  深拷贝：改变对象或数组或字符串的地址
 
   let obj = {
-    a: "这是a的值",
-    b: ["bb1",2,3],
-    c: { aa: 123, bb: undefined, cc: null, ee: '', ff: ["ff1",2] }
+    aa: undefined,
+    name: 'xm',
+    birth: new Date,
+    desc: null,
+    reg: /^123$/,
+    ss: [1,2,3],
+    fn: function() {
+      console.log('123')
+    },
   }
 
-  let obj2 = this._deepClone(obj)
+  let obj2 = _deepClone(obj)
 
   //输出结果：
-  obj2 = {
-    a: '这是a的值',
-    b: [ 'bb1', 2, 3 ],
-    c: { aa: 123, cc: null, ee: '', ff: [ 'ff1', 2 ] }
+  obj2: {
+    aa: undefined,
+    name: 'xm',
+    birth: new Date,
+    desc: null,
+    reg: /^123$/,
+    ss: [1,2,3],
+    fn: function() {
+      console.log('123')
+    },
   }
 ```
 
-### _encryStr  // 字符串加星号（*）展示
+### 2. _encryStr  // 字符串加星号（*）展示
+
+参数：第一个：string字符串，第二个：起始下标，第三个：结束下标（可以是负数，从末尾起始是-1，以此类推）
 
 ```02
-  //参数说明：第一个：string格式，第二个：起始下标，第三个：结束下标（可以是负数，从末尾起始是-1，以此类推）
-
   let str = '15631171756'
 
-  this._encryStr(str, 3, 7)   // 156****1756
-  this._encryStr(str, 3, -4)   // 156****1756
+  _encryStr(str, 3, 7)   // 156****1756
+  _encryStr(str, 3, -4)   // 156****1756
 ```
 
-### _formRequired  // 表单必填校验
+### 3. _getUrlQuery  // 获取地址栏上拼接的参数
+
+参数：string字符串
 
 ``` 03
-  // 例 1：
-  let form = {
-    a: '这是a中的表单内容',
-    b: 0,
-    c: {
-      aa: '这是aa中的表单内容',
-      bb: '0',
-    },
-    d: '',
-  }
+  // 若当前地址栏 url = http://localhost:8080/detail/2784?code=123&name=yyy
 
-  this._formRequired(form) //false（因为d的value值是空字符串）
+  _getUrlQuery('code') // "123"
+  _getUrlQuery('name') // "yyy"
+```
 
-  // 例 2：
-  let form = {
-    a: '这是a中的表单内容',
-    b: 0,
-    c: {
-      aa: '这是aa中的表单内容',
-      bb: '0',
-    },
-    d: '这里新添加了内容',
-  }
+### 4. _moneyBigFormat  // 金额转大写
 
-  this._formRequired(form) //true
+参数：string字符串 或 number
+
+``` 03
+  _moneyBigFormat(123456.78)   // "壹拾贰万叁仟肆佰伍拾陆元柒角捌分"
+  _moneyBigFormat('123456.78') // "壹拾贰万叁仟肆佰伍拾陆元柒角捌分"
+```
+
+### 5. _moneyReplace  // 金额格式限制
+
+参数：string字符串 或 number
+
+``` 03
+  _moneyReplace(123456.78)    // "123.45"
+  _moneyReplace('123456.78')  // "123.45"
+  _moneyReplace('a')  // 0
+```
+
+### 6. _moneyThousandFormat  // 金额添加千分符
+
+参数：string字符串 或 number
+
+``` 03
+  _moneyThousandFormat(12345678)    // "12,345,678.00"
+  _moneyThousandFormat('123456.78')    // "123,456.78"
 ```
